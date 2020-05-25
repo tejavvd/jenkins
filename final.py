@@ -1,4 +1,4 @@
-import requests,zipfile,io,datetime
+import requests,zipfile,io,datetime,os
 import pandas as pd
 def split(date):
     return date.split('/')
@@ -35,8 +35,8 @@ def merge(curr,old):
     with open(file_name,'w') as file:
         df_final.to_csv(file_name)
     return 0
-current_date=input("Enter Current Date YYYY/M/DD\t")
-old_date=input("Enter old date in YYYY/M/DD\t")
+current_date=os.getenv("IP1")
+old_date=os.getenv("IP2")
 current_date=split(current_date)
 current_date=mapped(current_date)
 cd_year,cd_month,cd_day=current_date
